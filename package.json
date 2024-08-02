@@ -2,7 +2,7 @@
   "name": "clojure-lint-action",
   "version": "0.0.1",
   "description": "Run clj-kondo and annotate source code changes with results.",
-  "main": "index.js",
+  "main": "lib/run.js",
   "directories": {
     "lib": "lib"
   },
