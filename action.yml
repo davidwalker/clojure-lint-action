@@ -1,23 +1,20 @@
-name: 'clj-kondo checks'
+name: 'clj-kondo reporter'
 description: 'Lint your clojure code with clj-kondo in parallel to your builds'
 author: 'DeLaGuardo'
 branding:
   icon: 'gift'
   color: 'blue'
 inputs:
-  clj-kondo-args:
-    description: 'Arguments to be passed to clj-kondo'
+  clj-kondo-cmd:
+    description: 'command to execute to run clj-kondo'
     required: true
-    default: '--lint src'
+    default: 'clj-kondo --lint src'
   check-name:
     description: 'Check name will be visible in Github Checks list'
     default: 'clj-kondo check'
-  github_token:
+  github-token:
     description: 'Github token to report linter results back to check'
     required: true
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  env:
-    CHECK_NAME: ${{ inputs.check-name }}
-    LINT_ARGS: ${{ inputs.clj-kondo-args }}
+  using: 'node20'
+  main: 'run.js'
